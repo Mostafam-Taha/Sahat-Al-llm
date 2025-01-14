@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/activation-page.css">
+    <title>البحث عن الطالب</title>
+    <style>
+        .hidden { display: none; }
+        .form-container-hidden { 
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 90%;
+            width: 400px;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+        .form-container input { margin: 5px 0; }
+        .form-container button { margin-top: 10px; }
+        .result p { font-size: 18px; }
+    </style>
+</head>
+<body>
+    <i class="fa-solid fa-circle-info" id="infoIcon" style="cursor: pointer;"></i>
+
+    <div class="container">
+        <h1>البحث عن الطالب</h1>
+        <label for="activationCode">أدخل كود التفعيل:</label>
+        <br>
+        <input type="text" id="activationCode" placeholder="أدخل كود التفعيل" autocomplete="off">
+        <div id="result" class="result"></div>
+        <div class="links">
+            <a href="tec-login-pro.html">الدخول كمدرس</a>
+            <a href="PDF.html">حميل كتب الثانوية العامة</a>
+            <a href="Quiz-test.html">اختبارات</a>
+            <!-- <a href="chat_bot.html">Chat Bot</a> -->
+            <!-- الرابط لعرض نموذج التسجيل السريع -->
+            <a href="#quickRegistrationSection" id="quickRegistrationLink">التسجيل السريع</a>
+        </div>
+        <button id="registerButton" class="register-button hidden">تسجيل</button>
+
+        <div id="quickRegistrationSection" style="display: none;">
+            <!-- نموذج التسجيل السريع -->
+            <form action="https://usebasin.com/f/1837fd406736" method="POST" enctype="multipart/form-data" id="form">
+                <label for="studentName">الاسم:</label>
+                <input type="text" name="studentName" id="studentName" placeholder="أدخل الاسم">
+                
+                <label for="studentEmail">البريد الإلكتروني:</label>
+                <input type="email" name="studentEmail" id="studentEmail" placeholder="أدخل البريد الإلكتروني">
+                
+                <label for="studentPhone">رقم الهاتف:</label>
+                <input type="tel" name="studentPhone" id="studentPhone" placeholder="أدخل رقم الهاتف">
+                
+                <input type="submit" value="تسجيل عبر Gmail">
+                <button id="generateCodeButton" type="button">تسجيل عبر التليجرام</button>
+            </form>
+        </div>
+        <div class="code-verification hidden" id="codeVerification">
+            <h2>التحقق من الكود العشوائي</h2>
+            <label for="verificationCode">أدخل الكود العشوائي:</label>
+            <input type="text" id="verificationCode" placeholder="أدخل الكود العشوائي">
+            <button id="verifyCodeButton">تحقق</button>
+            <p>ارسل الكود الخاص بك على الوتس وادخل عليه من هنا مؤقتًا <samp>4538291058</samp></p>
+            <div id="verificationResult" class="result"></div>
+        </div>
+    </div>
+    <div class="generated-code-display hidden" id="generatedCodeDisplay">
+        <p>الكود العشوائي الخاص بك هو: <span id="displayedCode"></span></p>
+    </div>    
+    <div class="video-section" id="videoSection" style="display: none;">
+        <h2>كيفية استخدام الموقع</h2>
+        <p>في هذا الفيديو، سنشرح لك كيفية استخدام الموقع والاستفادة من كافة الميزات المتاحة.</p>
+        <video controls>
+            <source src="./video/البحث عن الطالب - Personal - Microsoft​ Edge 2024-09-26 09-13-52.mp4" type="video/mp4">
+            المتصفح الخاص بك لا يدعم عرض الفيديو.
+        </video>
+    </div>
+    <!-- <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeowNu6EBvmCGyQm0VdPj9GKw_NXcGKbnAeUCV-MfYtr5eBwQ/viewform?embedded=true"></iframe> -->
+    <script>
+        // عرض نموذج التسجيل السريع عند النقر على الرابط
+        document.getElementById('quickRegistrationLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            const registrationForm = document.getElementById('registrationForm');
+            registrationForm.classList.toggle('hidden');
+        });
+    
+        // نموذج التسجيل السريع
+        document.getElementById('generateCodeButton').addEventListener('click', function() {
+            const name = document.getElementById('studentName').value;
+            const email = document.getElementById('studentEmail').value;
+            const phone = document.getElementById('studentPhone').value;
+
+            if (name.trim() === "" || email.trim() === "" || phone.trim() === "") {
+                alert('يرجى ملء جميع الحقول');
+                return;
+            }
+
+            const randomCode = Math.floor(1000000000 + Math.random() * 9000000000);
+            const telegramUrl = `https://t.me/mostafamohamed125?text=اسم: ${name}%0Aالبريد الإلكتروني: ${email}%0Aرقم الهاتف: ${phone}%0Aالكود العشوائي: ${randomCode}`;
+
+            // فتح نافذة جديدة مع رابط Telegram
+            window.open(telegramUrl, '_blank');
+
+            // حفظ بيانات الطالب والكود العشوائي في localStorage
+            localStorage.setItem('studentName', name);
+            localStorage.setItem('studentEmail', email);
+            localStorage.setItem('studentPhone', phone);
+            localStorage.setItem('generatedCode', randomCode);
+
+            // إظهار نموذج التحقق من الكود
+            document.getElementById('registrationForm').classList.add('hidden');
+            document.getElementById('codeVerification').classList.remove('hidden');
+        });
+
+
+        // التحقق من الكود العشوائي
+        document.getElementById('verifyCodeButton').addEventListener('click', function() {
+            const enteredCode = document.getElementById('verificationCode').value;
+            const generatedCode = localStorage.getItem('generatedCode');
+            const verificationResult = document.getElementById('verificationResult');
+            const activationCodeInput = document.getElementById('activationCode');
+
+            if (enteredCode.trim() === "") {
+                verificationResult.innerHTML = '<p>يرجى إدخال الكود العشوائي.</p>';
+                return;
+            }
+
+            if (enteredCode === generatedCode) {
+                verificationResult.innerHTML = '<p>تم التحقق بنجاح!</p>';
+                document.getElementById('codeVerification').classList.add('hidden');
+                activationCodeInput.value = enteredCode;
+                localStorage.setItem('studentVerified', 'true');
+            } else {
+                verificationResult.innerHTML = '<p>الكود الذي أدخلته غير صحيح.</p>';
+            }
+        });
+
+        // التحقق من كود التفعيل
+        document.getElementById('activationCode').addEventListener('input', async function() {
+            const activationCode = this.value;
+            const resultDiv = document.getElementById('result');
+            const registerButton = document.getElementById('registerButton');
+
+            if (activationCode.trim() === "") {
+                resultDiv.innerHTML = '';
+                registerButton.style.display = 'none';
+                return;
+            }
+
+            try {
+                const response = await fetch('students.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const students = await response.json();
+
+                const student = students.find(student => student.activation_code === activationCode);
+
+                if (student) {
+                    // حفظ بيانات الطالب في localStorage
+                    localStorage.setItem('studentName', student.name);
+                    localStorage.setItem('activationCode', student.activation_code);
+
+                    resultDiv.innerHTML = `<p><strong>الاسم:</strong> ${student.name}</p>`;
+                    registerButton.style.display = 'block';
+                    registerButton.onclick = () => window.location.href = 'login.html';
+                } else {
+                    resultDiv.innerHTML = '<p>لم يتم العثور على الطالب بهذا الكود.</p>';
+                    registerButton.style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Error fetching student data:', error);
+                resultDiv.innerHTML = '<p>حدث خطأ أثناء محاولة العثور على الطالب.</p>';
+                registerButton.style.display = 'none';
+            }
+        });    
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const activationCodeInput = document.getElementById('activationCode');
+
+            // منع القص
+            activationCodeInput.addEventListener('cut', function(event) {
+                event.preventDefault(); // منع القص
+                alert('القص غير مسموح.');
+            });
+
+            // منع النسخ
+            activationCodeInput.addEventListener('copy', function(event) {
+                event.preventDefault(); // منع النسخ
+                alert('النسخ غير مسموح.');
+            });
+
+            // منع اللصق
+            activationCodeInput.addEventListener('paste', function(event) {
+                event.preventDefault(); // منع اللصق
+                alert('اللصق غير مسموح.');
+            });
+
+            // منع السحب (drag)
+            activationCodeInput.addEventListener('dragstart', function(event) {
+                event.preventDefault(); // منع السحب
+                alert('السحب غير مسموح.');
+            });
+
+            // منع تحديد النص
+            activationCodeInput.addEventListener('selectstart', function(event) {
+                event.preventDefault(); // منع تحديد النص
+                alert('تحديد النص غير مسموح.');
+            });
+        });
+
+
+        // الحصول على العناصر
+        const quickRegistrationLink = document.getElementById('quickRegistrationLink');
+        const quickRegistrationSection = document.getElementById('quickRegistrationSection');
+
+        // إظهار القسم عند الضغط على الرابط
+        quickRegistrationLink.addEventListener('click', function(event) {
+            event.preventDefault(); // منع الانتقال إلى الرابط
+            quickRegistrationSection.style.display = 'block'; // إظهار القسم
+        });
+
+        // إخفاء القسم عند الضغط خارج القسم
+        document.addEventListener('click', function(event) {
+            if (!quickRegistrationSection.contains(event.target) && event.target !== quickRegistrationLink) {
+                quickRegistrationSection.style.display = 'none'; // إخفاء القسم
+            }
+        });
+
+        // الحصول على العناصر
+        const infoIcon = document.getElementById('infoIcon');
+        const videoSection = document.getElementById('videoSection');
+
+        // إظهار القسم عند الضغط على الأيقونة
+        infoIcon.addEventListener('click', function() {
+            if (videoSection.style.display === 'none' || videoSection.style.display === '') {
+                videoSection.style.display = 'block'; // إظهار القسم
+            } else {
+                videoSection.style.display = 'none'; // إخفاء القسم إذا كان مفتوحًا
+            }
+        });
+
+        // إخفاء القسم عند الضغط خارج القسم
+        document.addEventListener('click', function(event) {
+            if (!videoSection.contains(event.target) && event.target !== infoIcon) {
+                videoSection.style.display = 'none'; // إخفاء القسم
+            }
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <title>تسجيل الدخول</title>
+    <style>
+        .input-2, .input-3, .input-4, .input-5, .input-6, .input-7 {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <main class="name-section">
+        <div class="container">
+            <div class="input-1">
+                <label>أسم المستخدم</label>
+                <br>
+                <input type="text" id="username" required placeholder="أدخل الاسم">
+                <a href="#" id="next-button-1">التالي</a>
+            </div>
+            <div class="input-2">
+                <p>النوع</p>
+                <div class="chosse">
+                    <button data-value="ذكر" class="choice-button">ذكر</button>
+                    <button data-value="أنثي" class="choice-button">أنثي</button>
+                </div>
+            </div>
+            <div class="input-3">
+                <p>أختر السنة الدراسية</p>
+                <div class="select-shoba">
+                    <label>الصف الأول الثانوي</label>
+                    <input type="radio" required name="year" value="first-year">
+                    <label>الصف الثاني الثانوي</label>
+                    <input type="radio" required name="year" value="second-year">
+                </div>
+                <a href="#" id="next-button-3">التالي</a>
+            </div>            
+            <div class="input-4">
+                <p>الترم؟</p>
+                <div class="select-shoba">
+                    <label>الترم الأول</label>
+                    <input type="radio" required name="term" value="first-term">
+                    <label>الترم الثاني</label>
+                    <input type="radio" required name="term" value="second-term">
+                </div>
+                <a href="#" id="next-button-4">التالي</a>
+            </div>
+            <div class="input-5">
+                <p>أشعبه</p>
+                <div class="select-shoba">
+                    <button>علمي</button>
+                    <button>أدبي</button>
+                </div>
+                <a href="#" id="next-button-5">التالي</a>
+            </div>            
+            <div class="input-6">
+                <label>أختر الدولة</label>
+                <select name="country" id="country-select">
+                    <option value="select">أختر دوله</option>
+                    <option value="eg">مصر</option>
+                </select>
+                <div class="cite">
+                    <p>أكتب المدينة / القرية</p>
+                    <input type="text" required>
+                </div>
+                <a href="#" id="next-button-6">التالي</a>
+            </div>
+            
+            <div class="input-7">
+                <div class="Q&A">
+                <p>هل أنت مشترك في مرآة المؤمن؟</p>
+                    <div class="done">
+                        <button id="subscriber-yes">نعم, مشترك</button>
+                        <button id="subscriber-yes">لا, لم أشترك بعد</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </main>
+    <script src="./js/login.js"></script>
+</body>
+</html>

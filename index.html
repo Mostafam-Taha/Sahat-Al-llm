@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ساحة العلم</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="./WhatsApp Image 2024-08-04 at 22.43.51.jpeg" type="image/png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/custom-style.css">
+    <link rel="stylesheet" href="css/pomo-rall.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- عنصر الخلفية -->
+    <div id="background" class="background"></div>
+
+    <!-- عنصر علامة التحميل -->
+    <div id="loader" class="loader"></div>
+
+    <!-- محتوى الصفحة -->
+    <div id="content" style="display: none;">
+        <!-- محتوى الموقع هنا -->
+    </div>
+    <div class="content">
+        <div class="welcome-container">
+            <div><a href="./Down-App.html" class="link-app">تجربة مجانية</a></div>
+            <div id="welcome-message">مرحبًا</div>
+        </div>
+    </div>
+    <main class="box">
+        <div class="container">
+            <div class="box-1">
+                <i class="fas fa-calendar-alt"></i>
+                <div class="icon-line">
+                    <div class="line"></div>
+                    <h2> جدول زمني</h2>
+                </div>
+                <p>ابْنِ جَدْوَلَكَ الدِّرَاسِيَّ الآنَ بِطُرُقٍ سَهْلَةٍ وَبَسِيطَةٍ</p> <!-- سيتم تغييره -->
+                <div class="click-line-icon">
+                    <i class="fa-solid fa-angle-left"></i>
+                    <a href="#" style="direction: rtl;">جارى العمل عليه...</a>
+                </div>
+            </div>
+            <div class="box-2">
+                <i id="PDFIcon" class="fas fa-file-pdf"></i>
+                <div class="icon-line">
+                    <div class="line"></div>
+                    <h2>PDF</h2>
+                </div>
+                <p>حَمِّلِ الكُتُبَ الدِّرَاسِيَّةَ الآنَ لِجَمِيعِ المَرَاحِلِ الثَّانَوِيَّةِ.</p> <!-- سيتم تغييره -->
+                <div class="click-line-icon">
+                    <i class="fa-solid fa-angle-left"></i>
+                    <a href="PDF.html"></i>انطلق</a>
+                </div>
+            </div>
+            <div class="box-3">
+                <i class="fas fa-pen-alt"></i>
+                <div class="icon-line">
+                    <div class="line"></div>
+                    <h2>اختبارات</h2>
+                </div>
+                <p>أَدْخِلِ اختباراتٍ وَحَاكِ شِبْهَ الامْتِحَانِ الحَقِيقِيِّ فِي الجَنَّةِ</p> <!-- سيتم تغييره -->
+                <div class="click-line-icon">
+                    <i class="fa-solid fa-angle-left"></i>
+                    <a href="Quiz-test.html">انطلق</a>
+                </div>
+            </div>
+            <div class="box-4">
+                <i id="searchIcon" class="fas fa-search"></i>
+                <div class="icon-line">
+                    <div class="line"></div>
+                    <h2>إبحث عن الإجابة</h2>
+                </div>
+                <p>اكتب سؤال وحصل على الإجابة مباشرةً</p> <!-- سيتم تغييره -->
+                <div class="click-line-icon">
+                    <i class="fa-solid fa-angle-left"></i>
+                    <a href="search.html">انطلق</a>
+                </div>
+            </div>
+            <div class="box-5">
+                <i class="fa-brands fa-airbnb"></i>
+                <div class="icon-line">
+                    <div class="line"></div>
+                    <h2>رفع صورة</h2>
+                </div>
+                <p>صور سبورة او ارفع صورة شاركها او ذاكر من خلاله.</p> <!-- سيتم تغييره -->
+                <div class="click-line-icon">
+                    <i class="fa-solid fa-angle-left"></i>
+                    <a href="./Room_Class/arshef.html">انطلق</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="notification" class="notification">
+        <p>إشراقة الصباح: تكريم للمجتهدين قبل الفجر</p>
+        <a href="profile.html#promo-code" id="notification-link">أحصل على المكافائه</a>
+    </div>
+    <div id="logo-notification" class="logo-notification hide">
+        <img src="WhatsApp Image 2024-08-12 at 00.56.07 (3).jpeg" alt="شعار" class="notification-image">
+        <p>شكراً لعبد الرحمن سمير، أول من سجل في "ساحة العلم". لقد كنت مميزاً بدعمك المبكر، ونفخر بكونك أول من يساهم في نجاحنا!</p>
+    </div>
+    <div id="telegram-notification" class="telegram-notification">
+        تابع ساحة العلم على <a href="https://t.me/+m0CHtbOeKss1MDBk" target="_blank" style="color: white;">التليجرام</a>
+    </div>    
+    <div id="password-overlay" class="password-overlay">
+        <div class="password-prompt">
+            <h2>يرجى إدخال كلمة المرور</h2>
+            <input type="password" id="password-input" placeholder="كلمة المرور">
+            <button id="password-submit">تأكيد</button>
+            <p id="forgot-password" style="display: none; cursor: pointer; color: blue;">هل نسيت كلمة السر؟</p>
+        </div>
+    </div>
+    <!-- bottom-header -->
+     <div class="bottom">
+        <div class="container">
+            <div class="haed-1">
+                <ul>
+                    <li><a href="./index.html"><i class="fas fa-home"></i><p class="text"> الرئيسية</p></a></li>
+                </ul>
+            </div>
+            <div class="haed-2">
+                <ul>
+                    <li><a href="./PDF.html"><i class="fas fa-file-pdf"></i><p class="text">PDF</p></a></li>
+                </ul>
+            </div>
+            <div class="haed-3">
+                <ul>
+                    <li><a href="./Quiz-test.html"><i class="fas fa-pen-fancy"></i><p class="text"> اختبارات</p></a></li>
+                </ul>
+            </div>
+            <div class="haed-4">
+                <ul>
+                    <li><a href="./doroosi.html"><i class="fas fa-book-open"></i><p class="text">دروسي</p></a></li>
+                </ul>
+            </div>
+            <div class="haed-6">
+                <ul style="margin: 0 40px 0 0;">
+                    <li><i class="fa-solid fa-ellipsis" id="toggle-menu"></i></li>
+                </ul>
+            </div>             
+            <ul class="tools" id="tools-menu">
+                <div>
+                    <i style="color: #dadada66; width: 25px; height: 25px;" class="fa-solid fa-circle-info"></i>
+                </div>
+                <div class="haed-5">
+                    <ul>
+                        <li><a style="margin: 0;" href="./test.html"><i class="fas fa-chart-line"></i>الإحصائيات</a></li>
+                    </ul>
+                </div>
+                <div class="haed-7">
+                    <ul>
+                        <li><a href="./search.html"><i class="fas fa-search"></i>بحث عن إجابة</a></li>
+                    </ul>
+                </div>
+                <div class="haed-8">
+                    <ul>
+                        <li><a href="./Settings.html"><i class="fas fa-cog"></i>الإعدادات</a></li>
+                    </ul>
+                </div>
+                <div class="haed-9">
+                    <ul>
+                        <li><a href="#" id="logout-button"><i class="fas fa-sign-out-alt"></i>تسجيل الخروج</a></li>
+                    </ul>
+                </div>
+                <div class="haed-10">
+                    <ul>
+                        <li>
+                            <a class="a-img" href="./profile.html">
+                                <img id="profile-icon" class="profile-icon" src="./img/Lifesavers - Avatar-1.png" alt="صورة الملف الشخصي">
+                                الملف الشخصي
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </ul>
+        </div>
+    </div>
+    <div id="delete-confirmation" class="delete" style="display: none;" >
+        <div class="container">
+            <div>
+                <p>هل انت متأكد من تسجيل الخروج؟</p>
+            </div>
+            <div class="yas&on">
+                <button id="confirm-delete" style="background-color: #b31212; border: #2c3e50 solid 1px; border-radius: 60px; padding: 5px 20px; cursor: pointer;">خروج</button>
+                <button id="cancel-delete" style="background-color: #ffffff00; border: #2c3e50 solid 1px; border-radius: 60px; padding: 5px 20px; cursor: pointer;">إلغاء</button>
+            </div>
+        </div>
+    </div>
+    <div class="code-shuaai">
+        <div class="container" id="codeSection">
+            <div><i class="fa-solid fa-xmark"></i></div>
+            <div><a href="profile.html#promo-code">أخذ الهدية</a></div>
+            <h3>شارك الكود مع الأصدقاء</h3>
+            <div class="logo">
+            </div>
+            <div id="codeContainer"></div>
+            <div class="date-container" id="dateContainer"></div>
+            <div class="share">
+                <div class="copy-button" id="copyButton">نسخ <i class="fa-regular fa-copy"></i></div>
+                <div class="share-button" id="shareButton">مشاركة <i class="fa-solid fa-share"></i></div>
+            </div>
+            <div class="share-content" id="shareContent">
+                <!-- أزرار المشاركة -->
+                <a href="#" id="whatsappShare" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#" id="facebookShare" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" id="telegramShare" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+                <a href="#" id="googleNotesShare" target="_blank"><i class="fa-brands fa-google"></i></a>
+            </div>
+            <p>أدخل على <strong>الملف الشخصي</strong> فى الزاوية على اليسار ادخل الكود ثم اضغط على علامةالصح وشارك الكود مع الاصدقاء .</p>
+            <div class="logo-shar">
+                <img src="#" alt="ساحة العلم">
+                <p id="user-welcome-message">المرسل</p>
+            </div>
+        </div>
+    </div>
+    <!-- رسالة الحظر -->
+    <div class="overlay hidden" id="banOverlay">
+        <div class="message-block">
+            <div class="key-block">
+                <h2> <i class="fa-solid fa-triangle-exclamation"></i> رسالة حظر دائم</h2>
+                <p>مرحبًا يا <span id="userName"></span>، لقد لاحظنا نشاطًا غير مرغوب فيه بهذا الكود <span id="userCode"></span>. تم تسجيل الدخول بهذا الكود عدة مرات وهو يعمل لفترات طويلة على مدار اليوم. يُرجى التواصل مع خدمة عملاء ساحة العلم لحل هذه المشكلة.</p>
+                <p>شكرًا لك، كان معك فريق ساحة العلم.</p>
+            </div>
+        </div>
+    </div>
+    <div class="stap-bay" id="stap-bay">
+        <div class="container">
+            <h2>مميزات التحديث الجديد</h2>
+            <div class="stap">
+                <div class="icon">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <div class="pargaf">
+                    <h3>إحصائيات</h3>
+                    <div><p>تتبع الإحصائيات اختباراتك ووقت الدراسة والتركيز.</p></div>
+                </div>
+            </div>
+            <div class="stap">
+                <div class="icon">
+                    <i class="fa-regular fa-file-image"></i>
+                </div>
+                <div class="pargaf">
+                    <h3>تصوير</h3>
+                    <div><p>يمكنك تصوير أو رفع صورة لحفظها وتنظيمها والتفاعل مع الموقع.</p></div>
+                </div>
+            </div>
+            <div class="stap">
+                <div class="icon">
+                    <i class="fa-solid fa-border-top-left"></i>
+                </div>
+                <div class="pargaf">
+                    <h3>تحسين التصميم</h3>
+                    <div><p>تم تحسين تصميم الموقع مع إمكانية التبديل بين الوضع الفاتح والداكن من صفحة <strong>الإعدادات</strong>.</p></div>
+                </div>
+            </div>
+            <div class="stap">
+                <div class="icon">
+                    <i class="fa-solid fa-bug"></i>
+                </div>
+                <div class="pargaf">
+                    <h3>رفع مستوى الأمان</h3>
+                    <div><p>زيادة معدل الأمان إلى 37% ضد الغش. لمعرفة المزيد، ادخل إلى صفحة <strong>الإختبارات</strong>.</p></div>
+                </div>
+            </div>
+            <div class="stap">
+                <div class="icon">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <div class="pargaf">
+                    <h3>حماية البيانات</h3>
+                    <div><p>توفير حماية متقدمة لبياناتك الشخصية ومتابعة النشاط عبر الموقع بأمان.</p></div>
+                </div>
+            </div>
+            <div class="stap">
+                <div class="icon">
+                    <i class="fa-regular fa-handshake"></i>
+                </div>
+                <div class="pargaf">
+                    <h3>التعاون</h3>
+                    <div><p>العمل مع الأصدقاء والمعلمين لإنجاز المشاريع المشتركة وتبادل المعرفة.</p></div>
+                </div>
+            </div>
+            <div class="stap">
+                <div class="icon">
+                    <i class="fa-solid fa-arrow-turn-up"></i>
+                </div>
+                <div class="pargaf">
+                    <h3>رفع المستويات</h3>
+                    <div><p>تقدم في المستويات الدراسية بناءً على أدائك ونتائجك في الاختبارات.</p></div>
+                </div>
+            </div>
+            <div class="stap">
+                <div class="icon">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+                <div class="pargaf">
+                    <h3>قائمة المهام</h3>
+                    <div><p>تنظيم مهامك اليومية والواجبات الدراسية ضمن قائمة مهام مخصصة.</p></div>
+                </div>
+            </div>
+            <div class="stap">
+                <div style="margin: 0 -5px 0 0;" class="icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="pargaf">
+                    <h3>إنجازات الدراسة</h3>
+                    <div><p>احتفل بإنجازاتك الدراسية وتقدمك الأكاديمي من خلال نظام تتبع ذكي.</p></div>
+                </div>
+            </div>
+            <div class="stap">
+                <div class="icon">
+                    <i class="fa-solid fa-file-pdf"></i>
+                </div>
+                <div class="pargaf">
+                    <h3>الملفات التعليمية</h3>
+                    <div><p>تحميل ملفات PDF الخاصة بالدروس والمواد التعليمية بسهولة.</p></div>
+                </div>
+            </div>
+            <div class="btn">
+                <!-- <button> <i class="fa-solid fa-angle-right"></i> التالي</button> -->
+                <button class="skip" id="skip-btn">تخطي</button>
+            </div>
+        </div>
+    </div>
+<!--  -->
+<!--  -->
+<!--  -->
+<a id="pomo-link" href="./Room_Class/AR_mohamed_class-2/Ar_dars-1.html#timerWindow">
+    <div class="pomo">
+        <div id="timer" class="circle"></div> <!-- عنصر التوقيت -->
+    </div>
+</a>
+    <div id="timerWindow" class="modal" style="display: none;">
+        <div class="xmark">
+            <span style="cursor: pointer;" class="close" onclick="closeTimerWindow()">&times;</span>
+            <div><i class="fa-regular fa-circle"></i></div>
+        </div>
+        <div class="modal-content">
+            <div class="circle">
+                <p id="timeDisplay">25:00</p>
+            </div>
+            <p style="font-size: 10px; margin: 10px 0; color: rgb(145, 145, 145);" id="sessionNameDisplay">اسم الجلسة</p> <!-- العنصر الجديد لعرض اسم الجلسة -->
+            <div class="control">
+                <button id="startStopButton" onclick="toggleTimer()"><i class="fa-solid fa-play"></i></button>
+                <button onclick="resetTimer()"><i class="fa-solid fa-rotate-right"></i></button>
+                <button onclick="toggleSettings()"><i class="fa-solid fa-sliders"></i></button>
+            </div>
+            <div id="settingsPanel" style="display: none;">
+                <div class="study">
+                    <div class="close">
+                        <div style="cursor: pointer;" id="closeEditPomo"><i class="fa-solid fa-xmark"></i></div>
+                    </div>
+                    <div id="timeSinceLastSession"></div>
+                    <label for="sessionName">اسم الجلسة:</label>
+                    <input type="text" id="sessionName" placeholder="أدخل اسم الجلسة">
+                    <label for="studyTime">وقت الدراسة:</label>
+                    <input type="number" id="studyTime" value="25" min="1">
+                    <label for="breakTime">وقت الراحة:</label>
+                    <input type="number" id="breakTime" value="5" min="1">
+                    <label for="music">اختيار الموسيقى:</label>
+                    <select id="music">
+                        <option value="none">بدون موسيقى</option>
+                        <option value="relaxing">موسيقى استرخاء</option>
+                        <option value="focus">موسيقى تركيز</option>
+                    </select>
+                </div>
+            </div>                
+        </div>
+    </div>
+    <!-- قسم الإحصائيات -->
+    <section id="statisticsSection" class="statistics" style="display: none;">
+        <div class="header-statistics">
+            <h2 style="margin: 0; font-size: large; font-weight: bold;">الاحصائيات</h2>
+            <div><i class="fa-solid fa-xmark" onclick="closeStatistics()"></i></div>
+        </div>
+        <div class="container">
+            <div class="focus">
+                <div class="chabs-hour">
+                    <div class="today-focus">
+                        <h3>وقت التركيز اليوم</h3>
+                        <p id="time-difference">0h0m</p>
+                        <h1 id="total-focus-today">0h0m</h1> <!-- عرض إجمالي وقت التركيز اليومي -->
+                    </div>                                                        
+                    <div class="today-pomo">
+                        <h3>عدد الجلسات</h3>
+                        <h1><span id="today-study-sessions">0</span></h1> 
+                    </div>
+                    <div class="total-focus">
+                        <h3>الوقت الكلي للتركيز</h3>
+                        <p id="total-focus-time">0h0m</p>
+                        <h1 id="total-focus-h1">0h0m</h1>
+                    </div>
+                    <div class="total-pomo">
+                        <h3>عدد الجلسات الكلي</h3>
+                        <h1 id="total-sessions">0</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="top-bottom">
+                <div class="statistics-chap-1">
+                    <canvas id="studyChart" width="400" height="200"></canvas>
+                    <p>
+                        <span id="sessionNameDisplay">اسم الجلسة</span> 
+                        <span id="totalHoursStudied">0h0m</span> 
+                        <span id="studyPercentage">0%</span>
+                    </p>
+                </div>                    
+                <div class="statistics-chap-1"></div>
+            </div>
+        </div>
+    </section>
+    <audio id="studyEndSound" src="./Sound/ringtone-bubbly-bubbles-188202.mp3"></audio>
+    <audio id="breakEndSound" src="./Sound/braek.mp3"></audio>
+
+    <audio id="notification-sound" src="./Sound/notification-sound-7062.mp3" preload="auto"></audio>
+    <script src="js/script.js"></script>
+    <script src="./js/light-dark-mode-2.js"></script>
+    <script src="js/massage-block.js"></script>
+    <script src="js/file.js"></script>
+    <script src="Room_Class/js/Pomodoro Technique.js"></script>
+    <script>
+        // Check if activation code is stored in localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const activationCode = localStorage.getItem('activationCode');
+            if (!activationCode) {
+                // Redirect to activation page if no code is found
+                window.location.href = 'activation-page.html';
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const notification = document.getElementById('notification');
+            const notificationSound = document.getElementById('notification-sound');
+    
+        function showNotification() {
+            notification.classList.remove('hide'); // إزالة فئة الإخفاء إذا كانت موجودة
+            notification.classList.add('show');
+            notificationSound.play(); // تشغيل الصوت عند ظهور الإشعار
+            setTimeout(() => {
+                notification.classList.remove('show');
+                notification.classList.add('hide');
+            }, 5000); // مدة ظهور الإشعار 5 ثوانٍ
+        }
+    
+        function checkTime() {
+            const now = new Date();
+            const startHour = 3;
+            const startMinute = 0;
+            const endHour = 4; 
+            const endMinute = 0;
+    
+            const startTime = new Date();
+            startTime.setHours(startHour, startMinute, 0, 0);
+    
+            const endTime = new Date();
+            endTime.setHours(endHour, endMinute, 0, 0);
+    
+                if (now >= startTime && now <= endTime) {
+                showNotification();
+            }
+        }
+    
+        // Check time immediately
+        checkTime();
+
+        // Set interval to check every minute
+        setInterval(checkTime, 60000); // 60000 ms = 1 minute   
+    });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var gender = localStorage.getItem('gender');
+            var profileIcon = document.getElementById('profile-icon');
+    
+            if (gender === 'أنثي') {
+                profileIcon.src = 'img/muslim-7747745_1280 (1).png';
+                } else {
+                    profileIcon.src = 'img/Lifesavers - Avatar-1.png';
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordOverlay = document.getElementById('password-overlay');
+            const passwordInput = document.getElementById('password-input');
+            const passwordSubmit = document.getElementById('password-submit');
+            const forgotPassword = document.getElementById('forgot-password');
+            const storedPassword = localStorage.getItem('password');
+            const content = document.body;
+
+            if (storedPassword) {
+                content.classList.add('blurred');
+                passwordOverlay.style.display = 'flex';
+
+                passwordSubmit.addEventListener('click', function() {
+                    const enteredPassword = passwordInput.value;
+                    if (enteredPassword === storedPassword) {
+                        content.classList.remove('blurred');
+                        passwordOverlay.style.display = 'none';
+                    } else {
+                        alert('كلمة المرور غير صحيحة!');
+                        forgotPassword.style.display = 'block'; // إظهار "هل نسيت كلمة السر؟"
+                    }
+                });
+
+                passwordInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        passwordSubmit.click();
+                    }
+                });
+
+                // نقل المستخدم إلى صفحة الإعدادات عند الضغط على "هل نسيت كلمة السر؟"
+                forgotPassword.addEventListener('click', function() {
+                    window.location.href = 'Settings.html';
+                });
+            } else {
+                passwordOverlay.style.display = 'none';
+            }
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // إخفاء الخلفية وعلامة التحميل وعرض المحتوى بعد تحميل الصفحة
+            const loader = document.getElementById('loader');
+                    const background = document.getElementById('background');
+                    const content = document.getElementById('content');
+
+            // عندما يتم تحميل كل العناصر
+            window.addEventListener('load', function() {
+                // تأخير إخفاء الخلفية وعلامة التحميل
+                setTimeout(function() {
+                    loader.style.display = 'none';
+                    background.style.display = 'none';
+                    content.style.display = 'block';
+                }, 250); // 250 مللي ثانية
+                });
+            });
+    </script>
+</body>
+</html>
