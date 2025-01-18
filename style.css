@@ -16,7 +16,7 @@
     --fc-border-style: solid;
     --fc-border-co-hevor: #066ac9;
     --fc-border-radius-width: 7px;
-    --fc-box-shadow-hevor: 0px 0px 0px 5px #066ac9;
+    --fc-box-shadow-hevor: 0px 0px 0px 5px #066bc954;
 }
 
 .row {
@@ -37,6 +37,7 @@ html {
 }
 
 body {
+    font-family: "Noto Kufi Arabic", sans-serif;
     background-color: var(--bs-primary-color);
     color: var(--fo-h1-h6-co);
     margin: 0;
@@ -59,6 +60,11 @@ p {
     padding: 0;
 }
 
+a {
+    text-decoration: var(--fc-border-width-none);
+    color: var(--fc-p-co);
+}
+
 hr {
     margin: 35px 0;
     border: var(--fc-border-width-none);
@@ -67,18 +73,19 @@ hr {
     height: 1px;
 }
 
+/* Style Header */
 .header {
     margin: 0;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+    padding: 0;
 }
 
 .header .navbar {
-    padding: 5px 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0 50px;
+    padding: 7px 0;
 }
-
 .header .navbar a {
     text-decoration: none;
 }
@@ -89,8 +96,12 @@ hr {
     text-align: center;
 }
 
+.br-logo {
+    display: var(--fc-border-width-none);
+}
 
-.header .navbar .logo .logo-sahat-alllm {
+.header .navbar .logo .logo-sahat-alllm,
+.br-logo .logo-sahat-alllm {
     margin: 0 5px 0 0;
     width: 22px;
     height: 22px;
@@ -98,95 +109,165 @@ hr {
     color: var(--fc-btn-bg);
 }
 
-.header .navbar .root-linge ul {
-    list-style: none;
+.logo .logo-sahat-alllm,
+.br-logo .logo-sahat-alllm {
+    margin: 0 5px 0 0;
+    width: 22px;
+    height: 22px;
+    margin: 0 5px 5px 0;
+    color: var(--fc-btn-bg);
 }
 
-.header .navbar .root-linge ul li {
-    font-size: 12px;
-    font-weight: 500;
+.header .navbar ul {
+    display: flex;
+    list-style: var(--fc-border-width-none);
+    padding: 0;
 }
 
-.header .navbar .root-linge ul li a {
-    text-decoration: none;
-    color: var(--fo-h1-h6-co);
+.header .navbar ul li {
+    padding: 0 10px;
 }
 
-/* Header index.html */
-.header .navbar .search-griy label {
-    cursor: text;
-    padding: 5px 7px;
-    border: var(--fc-border-width) var(--fc-inp-border-co) var(--fc-border-style);
-    border-radius: var(--fc-border-radius-width);
+.header .navbar ul li a {
+    font-size: 17px;
+    font-weight: 450;
+    transition: color .15s ease-in-out;
+}
+
+.header .navbar ul li a:hover {
+    color: var(--fc-btn-bg);
+}
+
+.header .navbar .root-linge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .navbar .root-linge .search-bar input[type="search"] {
+    font-family: "Noto Kufi Arabic", sans-serif;
+    font-family: 'Cairo', sans-serif;
+    margin: 6px 0 6px 0;
+    width: 200px;
+    padding: 8px 10px;
+    text-align: right;
+    border: var(--fc-inp-border-co) 1px solid;
+    border-radius: 7px;
+    color: var(--fc-p-co);
+    outline: none;
+    box-sizing: border-box;
     transition: border .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-.header .navbar .search-griy label input[type="search"] {
-    padding: 4px;
-    border: var(--fc-border-width-st);
-    outline: none;
-    text-align: right;
-    font-size: 14px;
-}
-
-.header .navbar .search-griy label:hover {
+.header .navbar .root-linge .search-bar input[type="search"]:focus {
+    border: var(--fc-border-co-hevor) 1px solid;
     box-shadow: var(--fc-box-shadow-hevor);
-    border: var(--fc-border-co-hevor);
 }
 
-.header .navbar .root-linge ul {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.header .navbar .image-user img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 0 0 12.5px; 
 }
 
-.header .navbar .root-linge ul .bi-heart {
-    font-size: 17px;
-    color: var(--fc-p-co);
+.header .navbar .image-user img:hover {
     cursor: var(--fc-cursor-poi);
-    transition: color .3s ease-in-out;
 }
 
-.header .navbar .root-linge ul .bi-person {
-    padding: 0 20px 0 20px;
+.menu-icon {
+    display: var(--fc-border-width-none);
 }
 
-.header .navbar .root-linge ul .bi-person,
-.root-linge ul .bi-bag-check {
-    cursor: var(--fc-cursor-poi);
-    width: 20px;
-    color: var(--fc-p-co);
-    margin: 0 0 5px 0;
-    transition: color .3s ease-in-out;
-}
-.header .navbar .root-linge ul .bi-heart:hover,
-.header .navbar .root-linge ul .bi-person:hover,
-.root-linge ul .bi-bag-check:hover {
-    color: var(--fc-btn-bg);
+
+.header.show {
+    left: 0;
 }
 
-.header .nav-block ul {
+.header-op {
     display: flex;
     flex-direction: row-reverse;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    text-align: right;
-    list-style: none;
-    padding: 0;
-    margin: var(--fc-margin-width);
+    margin: 0 30px;
+    padding: 10px 0;
 }
 
-.header .nav-block ul li {
-    padding: 5px 15px 15px 15px;
-}
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+        cursor: var(--fc-cursor-poi);
+    }
 
-.header .nav-block ul li a {
-    font-size: 14px;
-    text-decoration: none;
-    color: var(--fo-h1-h6-co);
-    transition: color .3s ease-in-out;
-}
+    .header {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 250px;
+        height: 100vh;
+        background-color: #ffffff;
+        color: white;
+        transition: left 0.5s ease;
+        padding: 20px 35px 15px 15px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }   
+    .header .navbar {
+        width: 100%;
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+    }
 
-.header .nav-block ul li a:hover {
-    color: var(--fc-btn-bg);
+    .header .navbar ul {
+        display: block;
+    }
+    
+    .header .navbar ul li {
+        width: 100%;
+        margin: 10px 0;
+        padding: 15px 5px 10px 15px;
+        border-radius: var(--fc-border-radius-width);
+        text-align: left;
+        border: var(--fc-border-color) var(--fc-border-width) var(--fc-border-style);
+        cursor: var(--fc-cursor-poi);
+        transition: background .3s ease-in-out;
+    }
+
+    .header .navbar ul li:hover {
+        background-color: var(--fc-btn-bg);
+    }
+
+    .header .navbar ul li a {
+        width: 100px;
+        transition: color .3s ease-in-out;
+    }
+    .header .navbar ul li a:hover {
+        color: var(--fc-border-color);
+    }
+
+    .header .navbar .root-linge {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header .navbar .image-user img {
+        margin: 0 -17px 0 10px;
+    }
+
+    .br-logo {
+        display: flex;
+        align-items: center;
+
+    }
+
+    .root-linge .search-bar {
+        width: 100%;
+    }
+
+    .header .navbar .root-linge .search-bar input[type="search"] {
+        width: 100%;
+    }
 }
