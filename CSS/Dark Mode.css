@@ -77,12 +77,17 @@ a {
     color: var(--fc-p-co);
 }
 
-hr {
-    margin: 35px 0;
-    border: var(--fc-border-width-none);
-    background-color: var(--fc-inp-border-co);
-    width: 100%;
-    height: 1px;
+body.dark-mode hr {
+    background-color: var(--fc-p-co);
+    margin: 10px 0;
+}
+
+body.dark-mode input {
+    color: #e0e0e0;
+}
+
+body.dark-mode select {
+    /* color: #e0e0e0; */
 }
 
 body {
@@ -125,4 +130,22 @@ body.dark-mode .plan .inner {
     color: #e0e0e0;
 }
 
-/* DPF */
+/* Quiztion */
+body.dark-mode .quiztion .container .con-header {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .quiztion .container .head-swi {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .quiztion .container .quiz-view-switchs .content-swi {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .quiztion .container button {
+    /* color: #e0e0e0; */
+}

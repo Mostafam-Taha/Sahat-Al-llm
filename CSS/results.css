@@ -1,0 +1,208 @@
+* {
+    font-family: 'Cairo', sans-serif;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .col-md-griy-1 {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode .col-md-85641 {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode .col-md-3-top
+.results {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode .col-md-412 {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+body.dark-mode .activityStatsChart{
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+body.dark-mode .monthlyChart {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+body.dark-mode .progressChart-45{
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+body.dark-mode .card-p-3-text-center {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background-color: #ffffff;
+    color: #2c3e50;
+    margin: 0;
+    padding: 0;
+    direction: rtl;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.col-md-3-top .griy-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.col-md-3-top .griy-block .col-md-griy-1 {
+    padding: 10px 10px 5px 10px;
+    margin: 5px;
+    border: solid 1px #2c3e505b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    border-radius: 10px;
+    /* min-width: 250px; */
+    height: 150px;
+    text-align: center;
+    flex-grow: 1; /* يسمح بتمديد الصندوق إذا احتاج الأمر */
+    word-wrap: break-word; /* يضمن أن النص لن يخرج خارج الصندوق */
+    margin-bottom: 10px;
+}
+
+.col-md-785 .row-gar {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    gap: 10px;
+}
+
+
+.col-md-785 .row-2 .col-md-85641 .col-md-3213 .d-flex .tests-bar-chart8 {
+    width: 100%;
+}
+
+.col-md-785 .row-gar .col-md-85641,
+.col-md-412,
+.activityStatsChart,
+.monthlyChart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: #2c3e505b 1px solid;
+    border-radius: 20px;
+    padding: 8px;
+    margin: 1px 0;
+    height: 500px;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.progressChart-45 {
+    border: #2c3e505b 1px solid;
+    border-radius: 20px;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.card-p-3-text-center {
+    padding: 5px;
+    border-radius: 20px;
+    border: #2c3e505b 1px solid;
+}
+
+.col-md-12 .score-log ul {
+    border: #2c3e505b 0.1px solid;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 5px;
+    list-style: none;
+}
+
+.col-md-12 .score-log ul li {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.results {
+    border: #2c3e502a 1px solid;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column; /* جعل العناصر تتكدس عموديًا */
+    margin: 10px 0;
+}
+
+.email-prompt {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hidden {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.visible {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#logout-button {
+    margin-top: 20px;
+}
+
+@media (max-width: 1024px) {
+    .col-md-785 .row-gar {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
+    }
+}
+
+@media (max-width: 450px) {
+    .col-md-785 .row-gar .col-md-85641,
+    .col-md-412,
+    .activityStatsChart,
+    .monthlyChart {
+        border: #2c3e505b 1px solid;
+        border-radius: 20px;
+        padding: 5px;
+        margin: 1px 0;
+        max-width: 350px;
+        height: 500px;
+    }
+}

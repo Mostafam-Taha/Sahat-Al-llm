@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="اكتب هنا وصفًا موجزًا وجذابًا عن الصفحة، يحتوي على الكلمات المفتاحية المهمة.">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="../image/logo/book-open-reader-solid.svg" type="image/svg">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B2Z6G6EY81"></script>
+    <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-B2Z6G6EY81');</script>
+    <link rel="stylesheet" href="../css/style.css">   
+    <!-- <link rel="stylesheet" href="../css/stats.css">    -->
+    <link rel="stylesheet" href="../CSS/quiztest.css">
+    <link rel="stylesheet" href="../CSS/Dark Mode.css">
+    <title>Sahat Al-llm | ARI</title>
+</head>
+<body>
+    <!-- Quiztion -->
+    <section class="quiztion">
+        <div class="container">
+            <div class="quiz-view-switchs">
+                <div class="head-swi">
+                    <div class="btn">
+                        <button onclick="navigateToPage('../statistics.html')" class="statistics" >الاحصائيات</button>
+                    </div>
+                    <div class="mat-name">Arabic</div>
+                </div>
+                <div class="content-swi"> 
+                    <div class="timer-dash">
+                        <div id="timer" style="font-weight: 400; font-size: 18px;">00:00</div>
+                        <div class="con-header">
+                            <div class="h1-qu">
+                                <h1>الاساليب الانشائية والخبرية</h1>
+                            </div>
+                            <div id="progress" style="font-size: 14px; color: #969696; margin-top: 10px;"></div>
+                            <div id="progress-container" style="width: 100%; height: 5px; background: #e0e0e0; margin-top: 10px; border-radius: 10px; overflow: hidden;">
+                                <div id="progress-bar" style="width: 0%; height: 100%; background: rgb(25, 199, 25); transition: width 0.5s;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: none;" id="orientationMessage">يرجى قلب الهاتف لإجراء الاختبار بشكل صحيح.</div>
+                    <div id="quiz-container">
+                        <div class="name-quiz" id="testNameSection">
+                            <img src="../image/element/survey-img.svg" alt="لا توجد صورة" loading="lazy"> 
+                            <div class="form"><input type="text" class="input" id="testName" placeholder="أدخل اسم الاختبار" required/><span class="input-border"></span></div>
+                            <button class="btn" id="startTest">بدء الاختبار</button>
+                        </div>
+                        <div class="test-quiz" id="quiz" style="display: none;"></div>
+                        <button id="submit" style="display: none;">إرسال</button>
+                        <div id="blockMessage" style="color: red; font-weight: bold; display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader"></div>
+        <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+            <div class="wheel"></div>
+            <div class="hamster">
+                <div class="hamster__body">
+                    <div class="hamster__head">
+                        <div class="hamster__ear"></div>
+                        <div class="hamster__eye"></div>
+                        <div class="hamster__nose"></div>
+                    </div>
+                    <div class="hamster__limb hamster__limb--fr"></div>
+                    <div class="hamster__limb hamster__limb--fl"></div>
+                    <div class="hamster__limb hamster__limb--br"></div>
+                    <div class="hamster__limb hamster__limb--bl"></div>
+                    <div class="hamster__tail"></div>
+                </div>
+            </div>
+            <div class="spoke"></div>
+        </div>
+    </div>
+    <script src="../js/quiz-test.js"></script>
+    <script src="../js/light-dark-mode.js"></script>
+    <script>
+        function navigateToPage(pageUrl) {
+            window.location.href = pageUrl;
+        }
+
+        // عندما يتم تحميل الصفحة بالكامل
+        window.addEventListener("load", function () {
+            // إخفاء شاشة التحميل بعد ثانية واحدة
+            setTimeout(() => {
+            // إخفاء شاشة التحميل
+            const loadingScreen = document.getElementById("loading-screen");
+            loadingScreen.style.display = "none";
+        
+            // عرض المحتوى
+            const content = document.getElementById("content");
+            //   content.style.display = "block";
+            }, 1); // تأخير لمدة ثانية واحدة (1000 مللي ثانية)
+        });
+    </script>
+</body>
+</html>

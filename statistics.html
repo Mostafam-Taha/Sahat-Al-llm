@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B2Z6G6EY81"></script>
+    <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-B2Z6G6EY81');</script>
+    <link rel="stylesheet" href="css/results.css">
+    <link rel="stylesheet" href="css/Dark Mode.css">
+    <title>إحصائيات</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="col-md-3-top">
+            <div>
+                <div id="results" class="results"></div>                    
+            </div>
+            <div class="griy-block">
+                <div class="col-md-griy-1">
+                    <div class="card-p-3-text-centers">
+                        <h5>متوسط الدرجات الكلية</h5>
+                        <h3 id="sharesValue">0</h3>
+                        <p id="percentageChange" class="text-success">+0%</p>
+                        <p id="progressStatus" class="mt-2"></p>
+                    </div>
+                </div>
+                <div class="col-md-griy-1">
+                    <div class="card-p-3-text-centers">
+                        <h3 id="rating"></h3>
+                        <p id="score-summary"></p>
+                    </div>                    
+                </div>                     
+                <div class="col-md-griy-1">
+                    <div class="card-p-3-text-centers" id="likesCard">
+                        <h5>الاجابات الصحيحة الخاطئة</h5>
+                        <a href="./results.html"><h3>هنا</h3></a>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div class="col-md-785">
+            <div class="row-gar">
+                <div class="col-md-85641">
+                    <div class="d-flex justify-content-between-align-items-center-12">
+                        <h5 style="margin-top: 20px;">اختبار اليوم</h5>
+                    </div>
+                    <canvas id="testsBarChart" class="tests-bar-chart8" width="425" height="370"></canvas>
+                </div>
+                <div class="col-md-412">
+                    <div class="card-p-32628453-text-center">
+                        <h5>إحصائيات الاسبوع</h5>
+                    </div>
+                    <canvas id="comparisonChart" width="500" height="370"></canvas>
+                </div>
+                <div style="height: auto;" class="activityStatsChart">
+                    <div>
+                        <h6 style="margin-top: 5px;">نسبة الاجابات</h6>
+                    </div>
+                    <canvas id="activityStatsChart" height="150"></canvas>
+                </div>
+                <div style="height: auto;" class="monthlyChart">
+                    <div>
+                        <h6>إحصائيات الشهر</h6>
+                    </div>
+                    <canvas id="monthlyChart" width="250" height="300"></canvas>
+                </div>
+            </div>
+            <div class="progressChart-45">
+                <div>
+                    <h6>أحصائيات جميع اختبارات اليوم الواحد</h6>
+                </div>
+                <canvas id= "progressChart" class="progress-chart" width="800" height="270"></canvas>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <div style="background-color: #ffffff00;" class="card-p-3">
+                        <div id="scoreLog" class="score-log"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Email Prompt and Logout Button -->
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <div style="background-color: #ffffff00;" class="card-p-3-text-center">
+                        <div id="emailPrompt" class="email-prompt">
+                            <label for="email">أدخل بريدك الإلكتروني:</label>
+                            <input type="email" id="email">
+                            <button id="saveData">حفظ البيانات</button>
+                        </div>
+                        <button id="logout-button" class="btn btn-danger mt-3"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/results.js"></script>
+    <!-- <script src="js/logout.js"></script> -->
+    <script src="js/light-dark-mode.js"></script>
+</body>
+</html>

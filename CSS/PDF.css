@@ -513,6 +513,15 @@ hr {
         width: 30px;
         height: 30px;
     }
+
+    .btn-ari {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        align-items: center;
+        justify-content: center;
+        margin: 20px 0 0 0;
+        gap: 20px;
+    } 
 }
 
 @media (max-width: 425px) {
