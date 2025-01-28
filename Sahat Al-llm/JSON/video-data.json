@@ -1,0 +1,15 @@
+[
+    {
+      "id": "dQw4w9WgXcQ",
+      "description": "هذا هو فيديو تعليمي حول كيفية استخدام HTML. هذا هو فيديو تعليمي حول كيفية استخدام HTML.هذا هو فيديو تعليمي حول كيفية استخدام HTML.هذا هو فيديو تعليمي حول كيفية استخدام HTML.",
+      "images": ["image1.jpg", "image2.jpg"],
+      "pdfs": ["tutorial1.pdf", "tutorial2.pdf"]
+    },
+    {
+      "id": "gz5RHyCMZ0",
+      "description": "فيديو آخر عن كيفية البرمجة باستخدام JavaScript.",
+      "images": ["js_image1.jpg", "js_image2.jpg"],
+      "pdfs": ["js_tutorial1.pdf", "js_tutorial2.pdf"]
+    }
+  ]
+  
