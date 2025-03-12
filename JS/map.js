@@ -23,7 +23,7 @@ document.getElementById('study-plan-form').addEventListener('submit', function (
             jsonFilePath = 'path/to/lessons-30day.json';
         } else if (totalDays <= 60) {
             jsonFilePath = 'path/to/lessons-60day.json';
-        } else if (totalDays <= 120) {
+        } else if (totalDays <= 65) {
             jsonFilePath = 'path/to/lessons-120day.json';
         }
 
