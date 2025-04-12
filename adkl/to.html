@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة التعلم الذكي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- شاشة التحميل -->
+    <div class="loading-screen">
+        <div class="loader">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        <p>جاري تحميل المنصة...</p>
+    </div>
+
+    <!-- شاشة تسجيل الدخول -->
+    <div class="login-container" id="login-section">
+        <div class="login-card">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>منصة التعلم الذكي</h1>
+            </div>
+            <div class="form-group">
+                <label for="username">اسم المستخدم</label>
+                <input type="text" id="username" placeholder="أدخل اسمك">
+            </div>
+            <button id="login-btn" class="primary-btn">
+                <i class="fas fa-sign-in-alt"></i> بدء التعلم
+            </button>
+            <div class="user-id-display">
+                <p>معرفك الفريد: <span id="unique-id"></span></p>
+                <button id="copy-id" class="secondary-btn">
+                    <i class="far fa-copy"></i> نسخ المعرف
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- الواجهة الرئيسية -->
+    <div class="main-app" id="app-section" style="display:none;">
+        <!-- الشريط العلوي -->
+        <header>
+            <div class="header-left">
+                <button id="menu-toggle" class="icon-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 id="page-title">أسئلتي</h1>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <span id="welcome-msg">مرحباً، </span>
+                    <div class="avatar" id="user-avatar">U</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- القائمة الجانبية -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="avatar" id="sidebar-avatar">U</div>
+                <h3 id="sidebar-username">مستخدم</h3>
+                <p class="user-id" id="sidebar-userid">ID: </p>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active" data-page="questions">
+                        <a href="#"><i class="fas fa-book-open"></i> أسئلتي</a>
+                    </li>
+                    <li data-page="add-question">
+                        <a href="#"><i class="fas fa-plus-circle"></i> إضافة سؤال</a>
+                    </li>
+                    <li data-page="statistics">
+                        <a href="#"><i class="fas fa-chart-line"></i> إحصائياتي</a>
+                    </li>
+                    <li data-page="backup">
+                        <a href="#"><i class="fas fa-cloud-upload-alt"></i> النسخ الاحتياطي</a>
+                    </li>
+                    <li>
+                        <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <p>الإصدار 1.0.0</p>
+            </div>
+        </aside>
+
+        <!-- المحتوى الرئيسي -->
+        <main>
+            <!-- قسم أسئلتي -->
+            <section class="content-section active" id="questions-page">
+                <div class="section-header">
+                    <h2><i class="fas fa-book-open"></i> أسئلتي</h2>
+                    <div class="search-filter">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="question-search" placeholder="ابحث في الأسئلة...">
+                        </div>
+                        <select id="question-filter">
+                            <option value="all">الكل</option>
+                            <option value="solved">محلولة</option>
+                            <option value="unsolved">غير محلولة</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-info">
+                        <span>تقدمك في الحل</span>
+                        <span id="progress-percent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                </div>
+                
+                <div class="questions-grid" id="questions-list"></div>
+                
+                <!-- واجهة حل السؤال -->
+                <div class="quiz-modal" id="quiz-modal">
+                    <div class="quiz-header">
+                        <h3 id="quiz-title">السؤال</h3>
+                        <button id="close-quiz" class="icon-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="quiz-content">
+                        <div id="quiz-question"></div>
+                        <div id="quiz-image-container"></div>
+                        
+                        <div class="quiz-options" id="quiz-options"></div>
+                        
+                        <button id="submit-answer" class="primary-btn">
+                            <i class="fas fa-check"></i> تأكيد الإجابة
+                        </button>
+                        
+                        <div class="quiz-feedback" id="quiz-feedback">
+                            <div class="feedback-content" id="feedback-content"></div>
+                            <button id="next-question" class="secondary-btn">
+                                <i class="fas fa-arrow-right"></i> التالي
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="quiz-overlay" id="quiz-overlay"></div>
+            </section>
+
+            <!-- قسم إضافة سؤال -->
+            <section class="content-section" id="add-question-page">
+                <div class="section-header">
+                    <h2><i class="fas fa-plus-circle"></i> إضافة سؤال جديد</h2>
+                </div>
+                
+                <form id="add-question-form">
+                    <div class="form-group">
+                        <label for="new-question">نص السؤال</label>
+                        <textarea id="new-question" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="question-image">صورة السؤال (اختياري)</label>
+                        <div class="file-upload">
+                            <input type="file" id="question-image" accept="image/*">
+                            <label for="question-image" class="file-upload-btn">
+                                <i class="fas fa-cloud-upload-alt"></i> اختر صورة
+                            </label>
+                            <span id="image-name">لم يتم اختيار صورة</span>
+                        </div>
+                    </div>
+                    
+                    <div class="options-container">
+                        <h3><i class="fas fa-list-ol"></i> خيارات الإجابة</h3>
+                        <div id="answer-options">
+                            <div class="option-item" data-index="0">
+                                <div class="option-controls">
+                                    <input type="radio" name="correct-answer" value="0" checked>
+                                    <button type="button" class="remove-option" disabled>
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="option-input" placeholder="الخيار الأول" required>
+                            </div>
+                            <div class="option-item" data-index="1">
+                                <div class="option-controls">
+                                    <input type="radio" name="correct-answer" value="1">
+                                    <button type="button" class="remove-option" disabled>
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="option-input" placeholder="الخيار الثاني" required>
+                            </div>
+                        </div>
+                        <button type="button" id="add-option" class="secondary-btn">
+                            <i class="fas fa-plus"></i> إضافة خيار
+                        </button>
+                    </div>
+                    
+                    <button type="submit" class="primary-btn">
+                        <i class="fas fa-save"></i> حفظ السؤال
+                    </button>
+                </form>
+            </section>
+
+            <!-- قسم الإحصائيات -->
+            <section class="content-section" id="statistics-page">
+                <div class="section-header">
+                    <h2><i class="fas fa-chart-line"></i> إحصائياتي</h2>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card primary">
+                        <div class="stat-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>إجمالي الأسئلة</h3>
+                            <p id="total-questions">0</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card success">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>أسئلة محلولة</h3>
+                            <p id="solved-questions">0</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card warning">
+                        <div class="stat-icon">
+                            <i class="fas fa-times-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>أسئلة غير محلولة</h3>
+                            <p id="unsolved-questions">0</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card info">
+                        <div class="stat-icon">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>أسئلة تحتوي صور</h3>
+                            <p id="image-questions">0</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="charts-container">
+                    <div class="chart-card">
+                        <h3><i class="fas fa-chart-pie"></i> توزيع الأسئلة</h3>
+                        <canvas id="questions-chart"></canvas>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <h3><i class="fas fa-chart-bar"></i> أداء الحل</h3>
+                        <canvas id="performance-chart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="recent-activity">
+                    <h3><i class="fas fa-history"></i> النشاط الأخير</h3>
+                    <div class="activity-list" id="activity-list"></div>
+                </div>
+            </section>
+
+            <!-- قسم النسخ الاحتياطي -->
+            <section class="content-section" id="backup-page">
+                <div class="section-header">
+                    <h2><i class="fas fa-cloud-upload-alt"></i> النسخ الاحتياطي</h2>
+                </div>
+                
+                <div class="backup-cards">
+                    <div class="backup-card">
+                        <div class="backup-icon export">
+                            <i class="fas fa-file-export"></i>
+                        </div>
+                        <h3>تصدير بياناتي</h3>
+                        <p>احفظ نسخة من جميع أسئلتك وإحصائياتك على جهازك</p>
+                        <button id="export-data" class="primary-btn">
+                            <i class="fas fa-download"></i> تصدير البيانات
+                        </button>
+                    </div>
+                    
+                    <div class="backup-card">
+                        <div class="backup-icon import">
+                            <i class="fas fa-file-import"></i>
+                        </div>
+                        <h3>استيراد بيانات</h3>
+                        <p>استرجع الأسئلة والإحصائيات من نسخة سابقة</p>
+                        <div class="file-upload">
+                            <input type="file" id="import-file" accept=".json">
+                            <label for="import-file" class="file-upload-btn">
+                                <i class="fas fa-file-upload"></i> اختر ملف
+                            </label>
+                        </div>
+                        <button id="import-data" class="secondary-btn">
+                            <i class="fas fa-upload"></i> استيراد البيانات
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="backup-info">
+                    <h3><i class="fas fa-info-circle"></i> معلومات النسخ الاحتياطي</h3>
+                    <ul>
+                        <li>البيانات يتم تخزينها محلياً على جهازك</li>
+                        <li>يمكنك تصدير بياناتك لاستخدامها على أجهزة أخرى</li>
+                        <li>الاستيراد سيضيف البيانات الجديدة دون حذف القديمة</li>
+                        <li>بياناتك تبقى خاصة بك ولا يراها أحد آخر</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <!-- الإشعارات -->
+        <div class="notification-container" id="notification-container"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

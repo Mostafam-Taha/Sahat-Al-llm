@@ -107,6 +107,31 @@ body.dark-mode .header .navbar a {
     color: #e0e0e0;
 }
 
+body.dark-mode  .progress-section {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .stat-card {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .plan-container {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode h3 {
+    background-color: #161616;
+    color: #e0e0e0;
+}
+
+
+body.dark-mode .modal-content h2 {
+    color: #2f2f2f;
+}
+
 /* Index.html */
 /* .view-user .container */
 body.dark-mode .view-user .container {

@@ -209,3 +209,631 @@ h1, h3 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
+
+
+.progress-percentage {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    text-align: center;
+}
+
+#progress-bar {
+    height: 100%;
+    background-color: #4CAF50;
+    transition: width 0.3s ease;
+}
+
+/* #progress-bar-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+} */
+
+/* الأساسيات */
+:root {
+    --primary-color: #4a89dc;
+    --secondary-color: #3bafda;
+    --danger-color: #e9573f;
+    --success-color: #8cc152;
+    --warning-color: #f6bb42;
+    --dark-color: #434a54;
+    --light-color: #f5f7fa;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* التخطيط العام */
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+header h1 {
+    color: var(--dark-color);
+    font-size: 28px;
+}
+
+header h1 i {
+    margin-left: 10px;
+}
+
+/* الأزرار */
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn i {
+    font-size: 14px;
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn.secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn.danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* شريط التقدم */
+.progress-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 20px;
+}
+
+.progress-container {
+    width: 100%;
+    height: 30px;
+    background-color: #e0e0e0;
+    border-radius: 15px;
+    margin: 15px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+#progress-bar {
+    height: 100%;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+    border-radius: 15px;
+}
+
+#progress-percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.days-remaining {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark-color);
+    text-align: center;
+}
+
+/* الإحصائيات */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background-color: white;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+}
+
+.stat-card i {
+    font-size: 24px;
+    display: block;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.stat-card span:first-of-type {
+    font-size: 24px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: var(--dark-color);
+}
+
+.stat-card span:last-of-type {
+    font-size: 14px;
+    color: #777;
+}
+
+/* مؤقت بومودورو */
+.pomodoro-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.pomodoro-section h2 {
+    margin-bottom: 15px;
+    color: var(--dark-color);
+}
+
+.pomodoro-section h2 i {
+    margin-left: 10px;
+}
+
+#pomodoro-timer {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 20px 0;
+    color: var(--primary-color);
+}
+
+.pomodoro-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* خطة الدراسة */
+.plan-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.day-container {
+    margin-bottom: 30px;
+}
+
+.day-container h3 {
+    padding: 10px 15px;
+    background-color: #f5f7fa;
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.day-container.today h3 {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.lesson-item {
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+}
+
+.lesson-item:hover {
+    background-color: #f5f7fa;
+}
+
+.lesson-item input[type="checkbox"] {
+    margin-left: 10px;
+}
+
+.lesson-item.checked {
+    text-decoration: line-through;
+    color: #777;
+    opacity: 0.7;
+}
+
+.priority-high {
+    border-right: 4px solid var(--danger-color);
+}
+
+.priority-medium {
+    border-right: 4px solid var(--warning-color);
+}
+
+.priority-low {
+    border-right: 4px solid var(--success-color);
+}
+
+/* التكيف مع الشاشات الصغيرة */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .pomodoro-buttons {
+        flex-direction: column;
+    }
+    
+    .pomodoro-buttons .btn {
+        width: 100%;
+    }
+}
+
+
+/* أنماط النافذة المنبثقة */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 25px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+    from {opacity: 0; transform: translateY(-50px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.close-modal {
+    float: left;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #888;
+}
+
+.close-modal:hover {
+    color: #000;
+}
+
+/* منطقة السحب والإفلات */
+#drop-zone {
+    border: 3px dashed #ccc;
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    margin: 20px 0;
+    transition: all 0.3s;
+}
+
+#drop-zone i {
+    font-size: 48px;
+    color: #3bafda;
+    margin-bottom: 15px;
+}
+
+#drop-zone p {
+    margin: 10px 0;
+    color: #555;
+}
+
+#drop-zone.active {
+    border-color: #3bafda;
+    background-color: #f0f9ff;
+}
+
+/* زر التأكيد */
+.btn.success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn.success:hover {
+    background-color: #3e8e41;
+}
+
+
+
+
+
+
+
+/* أنماط التقويم */
+.calendar-container {
+    margin: 20px auto;
+    max-width: 1000px;
+    direction: rtl;
+}
+
+.fc-event-content {
+    padding: 2px;
+    font-size: 12px;
+    overflow: hidden;
+}
+
+.fc-event-progress {
+    height: 3px;
+    background-color: rgba(255,255,255,0.7);
+    margin-top: 2px;
+}
+
+.fc-event-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* أنماط النافذة المنبثقة */
+.calendar-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.calendar-modal .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.calendar-modal .day-lessons {
+    margin-top: 15px;
+}
+
+/* تحسينات للعربية في التقويم */
+.fc .fc-toolbar-title {
+    font-size: 1.2em;
+}
+
+.fc-direction-rtl .fc-daygrid-event.fc-event-end, 
+.fc-direction-rtl .fc-daygrid-event.fc-event-start {
+    margin-right: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* أنماط وضع زنقت الكلاب */
+.btn.crazy {
+    background: linear-gradient(45deg, #ff6b6b, #feca57);
+    color: #000;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.modal-content.crazy-mode {
+    max-width: 500px;
+    background: #fff9e6;
+    border: 3px dashed #ff9f43;
+    border-radius: 15px;
+}
+
+.crazy-content {
+    text-align: center;
+    padding: 20px;
+}
+
+.crazy-gif {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.crazy-text {
+    font-size: 1.2em;
+    color: #ff6b6b;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+#days-count {
+    font-size: 1.5em;
+    color: #ee5253;
+}
+
+.slider-container {
+    margin: 20px 0;
+}
+
+#days-slider {
+    width: 100%;
+    height: 10px;
+    -webkit-appearance: none;
+    background: linear-gradient(90deg, #ff9ff3, #feca57);
+    border-radius: 5px;
+    outline: none;
+}
+
+#days-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #ff6b6b;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    font-size: 0.8em;
+    color: #576574;
+}
+
+.warning-text {
+    color: #ee5253;
+    background: #ffebee;
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 4px solid #ee5253;
+}
+
+.btn.crazy-confirm {
+    background: linear-gradient(45deg, #ee5253, #ff9f43);
+    color: white;
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    border-radius: 50px;
+    animation: shake 0.5s infinite alternate;
+}
+
+@keyframes shake {
+    from { transform: rotate(-3deg); }
+    to { transform: rotate(3deg); }
+}
+
+/* تأثيرات الكلاب */
+.dog-paw {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff6b6b"><path d="M12 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3zm0 8a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3zm-7 3a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3zm14 0a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>');
+    background-size: contain;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 100;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.success-message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff9f43;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 1000;
+}
+
+.success-message.show {
+    opacity: 1;
+}
+
+.success-message i {
+    margin-right: 10px;
+    animation: bounce 0.5s infinite alternate;
+}
+
+@keyframes bounce {
+    to { transform: translateY(-5px); }
+}
+
+@keyframes fall {
+    to { transform: translateY(calc(100vh + 30px)) rotate(360deg); }
+}

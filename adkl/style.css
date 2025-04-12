@@ -1,0 +1,141 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #f0f2f5;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 300px;
+    background: #2c3e50;
+    padding: 20px;
+    color: white;
+}
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+    background: white;
+}
+
+.builder-header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeIn 1s ease;
+}
+
+.site-name input {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
+    border: 2px solid #3498db;
+    border-radius: 25px;
+    margin-top: 20px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.feature-item {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-color: #3498db;
+}
+
+.design-section {
+    margin: 30px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 15px;
+}
+
+.color-picker {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.preview-section {
+    margin-top: 40px;
+    border: 2px dashed #3498db;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+#sitePreview {
+    width: 100%;
+    height: 400px;
+    border: 1px solid #ddd;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+.generate-btn {
+    background: #3498db;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 30px auto;
+}
+
+.generate-btn:hover {
+    background: #2980b9;
+    transform: scale(1.05);
+}
+
+.progress-map {
+    background: #34495e;
+    height: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    position: relative;
+}
+
+.progress-bar {
+    background: #3498db;
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 0.8em;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,71 @@
+{
+  "plan": {
+    "name": "شسيب",
+    "days": [
+      {
+        "date": "2025-04-12",
+        "lessons": [
+          "يب",
+          "شسيب"
+        ],
+        "isToday": true
+      },
+      {
+        "date": "2025-04-13",
+        "lessons": [
+          "سيببل",
+          "شسيب"
+        ],
+        "isToday": false
+      },
+      {
+        "date": "2025-04-14",
+        "lessons": [
+          "شسيب",
+          "الشسيب"
+        ],
+        "isToday": false
+      },
+      {
+        "date": "2025-04-15",
+        "lessons": [
+          "شس",
+          "شس"
+        ],
+        "isToday": false
+      },
+      {
+        "date": "2025-04-16",
+        "lessons": [
+          "سيشب",
+          "يب"
+        ],
+        "isToday": false
+      },
+      {
+        "date": "2025-04-17",
+        "lessons": [],
+        "isToday": false
+      },
+      {
+        "date": "2025-04-18",
+        "lessons": [],
+        "isToday": false
+      },
+      {
+        "date": "2025-04-19",
+        "lessons": [],
+        "isToday": false
+      },
+      {
+        "date": "2025-04-20",
+        "lessons": [],
+        "isToday": false
+      }
+    ],
+    "endDate": "2025-04-21"
+  },
+  "status": {
+    "2025-04-12-0": true
+  }
+}

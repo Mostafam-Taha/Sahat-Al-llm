@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منشئ المواقع المتقدم</title>
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #3498db, #9b59b6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 30px;
+            animation: gradientShift 8s infinite alternate;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .progress-map {
+            width: 100%;
+            height: 60px;
+            background-color: #ecf0f1;
+            border-radius: 30px;
+            margin: 30px 0;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #2ecc71, #27ae60);
+            width: 20%;
+            border-radius: 30px;
+            transition: width 0.5s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 0 20px;
+        }
+        
+        .step {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #bdc3c7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step.active {
+            background-color: #27ae60;
+            transform: scale(1.2);
+            transition: all 0.3s ease;
+        }
+        
+        .builder-section {
+            display: none;
+            animation: slideUp 0.5s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .builder-section.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #34495e;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.3s ease;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .option-card {
+            border: 2px solid #eee;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .option-card:hover {
+            border-color: #3498db;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .option-card.selected {
+            border-color: #2ecc71;
+            background-color: rgba(46, 204, 113, 0.1);
+        }
+        
+        .option-card i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #3498db;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background-color: #95a5a6;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+        }
+        
+        .btn-success {
+            background-color: #2ecc71;
+        }
+        
+        .btn-success:hover {
+            background-color: #27ae60;
+        }
+        
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .preview-container {
+            border: 2px dashed #bdc3c7;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            min-height: 300px;
+            background-color: #f9f9f9;
+            overflow: auto;
+        }
+        
+        .preview-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .feature-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .code-editor {
+            width: 100%;
+            height: 200px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            padding: 10px;
+            resize: vertical;
+        }
+        
+        .section-item {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .section-item button {
+            margin-left: 10px;
+        }
+        
+        .download-section {
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .download-btn {
+            background-color: #e67e22;
+            font-size: 1.2rem;
+            padding: 15px 30px;
+        }
+        
+        .download-btn:hover {
+            background-color: #d35400;
+        }
+        
+        .success-message {
+            text-align: center;
+            padding: 30px;
+            background-color: rgba(46, 204, 113, 0.2);
+            border-radius: 10px;
+            margin-top: 20px;
+            animation: bounceIn 0.8s;
+        }
+        
+        @keyframes bounceIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            70% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+        
+        .success-message i {
+            font-size: 4rem;
+            color: #2ecc71;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>منشئ المواقع المتقدم</h1>
+        
+        <!-- خريطة التقدم -->
+        <div class="progress-map">
+            <div class="progress-bar" id="progressBar">20% مكتمل</div>
+            <div class="progress-steps">
+                <div class="step active" data-step="1">1</div>
+                <div class="step" data-step="2">2</div>
+                <div class="step" data-step="3">3</div>
+                <div class="step" data-step="4">4</div>
+                <div class="step" data-step="5">5</div>
+            </div>
+        </div>
+        
+        <!-- الخطوة 1: معلومات أساسية -->
+        <div class="builder-section active" id="step1">
+            <h2>الخطوة 1: المعلومات الأساسية</h2>
+            
+            <div class="form-group">
+                <label for="siteName">اسم الموقع</label>
+                <input type="text" id="siteName" placeholder="أدخل اسم الموقع">
+            </div>
+            
+            <div class="form-group">
+                <label for="siteDescription">وصف الموقع</label>
+                <textarea id="siteDescription" rows="3" placeholder="أدخل وصفاً مختصراً للموقع"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="siteCategory">تصنيف الموقع</label>
+                <select id="siteCategory">
+                    <option value="">اختر تصنيفاً</option>
+                    <option value="business">موقع أعمال</option>
+                    <option value="portfolio">معرض أعمال</option>
+                    <option value="blog">مدونة</option>
+                    <option value="ecommerce">متجر إلكتروني</option>
+                    <option value="personal">موقع شخصي</option>
+                </select>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="btn btn-secondary" disabled>السابق</button>
+                <button class="btn" onclick="nextStep(1)">التالي</button>
+            </div>
+        </div>
+        
+        <!-- الخطوة 2: اختيار التصميم -->
+        <div class="builder-section" id="step2">
+            <h2>الخطوة 2: اختيار التصميم</h2>
+            
+            <div class="form-group">
+                <label>اختر لوناً أساسياً لموقعك</label>
+                <div class="options-grid" id="colorOptions">
+                    <div class="option-card" data-color="#3498db">
+                        <div style="width: 100%; height: 40px; background-color: #3498db; border-radius: 5px;"></div>
+                        <p>أزرق</p>
+                    </div>
+                    <div class="option-card" data-color="#e74c3c">
+                        <div style="width: 100%; height: 40px; background-color: #e74c3c; border-radius: 5px;"></div>
+                        <p>أحمر</p>
+                    </div>
+                    <div class="option-card" data-color="#2ecc71">
+                        <div style="width: 100%; height: 40px; background-color: #2ecc71; border-radius: 5px;"></div>
+                        <p>أخضر</p>
+                    </div>
+                    <div class="option-card" data-color="#9b59b6">
+                        <div style="width: 100%; height: 40px; background-color: #9b59b6; border-radius: 5px;"></div>
+                        <p>بنفسجي</p>
+                    </div>
+                    <div class="option-card" data-color="#f1c40f">
+                        <div style="width: 100%; height: 40px; background-color: #f1c40f; border-radius: 5px;"></div>
+                        <p>أصفر</p>
+                    </div>
+                    <div class="option-card" data-color="#e67e22">
+                        <div style="width: 100%; height: 40px; background-color: #e67e22; border-radius: 5px;"></div>
+                        <p>برتقالي</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>اختر نمط التصميم</label>
+                <div class="options-grid" id="styleOptions">
+                    <div class="option-card" data-style="modern">
+                        <i>🆕</i>
+                        <h3>حديث</h3>
+                        <p>تصميم عصري بخطوط نظيفة</p>
+                    </div>
+                    <div class="option-card" data-style="minimal">
+                        <i>✂️</i>
+                        <h3>بسيط</h3>
+                        <p>تصميم بسيط مع الحد الأدنى من العناصر</p>
+                    </div>
+                    <div class="option-card" data-style="elegant">
+                        <i>🎩</i>
+                        <h3>أنيق</h3>
+                        <p>تصميم كلاسيكي أنيق</p>
+                    </div>
+                    <div class="option-card" data-style="creative">
+                        <i>🎨</i>
+                        <h3>إبداعي</h3>
+                        <p>تصميم فني وإبداعي</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="btn btn-secondary" onclick="prevStep(2)">السابق</button>
+                <button class="btn" onclick="nextStep(2)">التالي</button>
+            </div>
+        </div>
+        
+        <!-- الخطوة 3: المميزات -->
+        <div class="builder-section" id="step3">
+            <h2>الخطوة 3: اختيار المميزات</h2>
+            <p>اختر 10 مميزات تريدها في موقعك</p>
+            
+            <div class="options-grid" id="featureOptions">
+                <div class="option-card" data-feature="slider">
+                    <i>🖼️</i>
+                    <h3>سلايدر صور</h3>
+                    <p>عرض صور متحركة في الصفحة الرئيسية</p>
+                </div>
+                <div class="option-card" data-feature="gallery">
+                    <i>📷</i>
+                    <h3>معرض صور</h3>
+                    <p>معرض لعرض مجموعة من الصور</p>
+                </div>
+                <div class="option-card" data-feature="contact">
+                    <i>✉️</i>
+                    <h3>نموذج تواصل</h3>
+                    <p>نموذج لاستقبال رسائل الزوار</p>
+                </div>
+                <div class="option-card" data-feature="blog">
+                    <i>📝</i>
+                    <h3>مدونة</h3>
+                    <p>قسم للمقالات والأخبار</p>
+                </div>
+                <div class="option-card" data-feature="map">
+                    <i>🗺️</i>
+                    <h3>خريطة</h3>
+                    <p>خريطة تفاعلية لموقعك</p>
+                </div>
+                <div class="option-card" data-feature="social">
+                    <i>📱</i>
+                    <h3>روابط اجتماعية</h3>
+                    <p>روابط لحساباتك على وسائل التواصل</p>
+                </div>
+                <div class="option-card" data-feature="video">
+                    <i>🎥</i>
+                    <h3>مشغل فيديو</h3>
+                    <p>قسم لعرض مقاطع الفيديو</p>
+                </div>
+                <div class="option-card" data-feature="testimonials">
+                    <i>💬</i>
+                    <h3>آراء العملاء</h3>
+                    <p>عرض آراء وتقييمات العملاء</p>
+                </div>
+                <div class="option-card" data-feature="products">
+                    <i>🛍️</i>
+                    <h3>عرض المنتجات</h3>
+                    <p>قسم لعرض منتجاتك أو خدماتك</p>
+                </div>
+                <div class="option-card" data-feature="team">
+                    <i>👥</i>
+                    <h3>فريق العمل</h3>
+                    <p>قسم للتعريف بفريق العمل</p>
+                </div>
+                <div class="option-card" data-feature="faq">
+                    <i>❓</i>
+                    <h3>الأسئلة الشائعة</h3>
+                    <p>قسم للأسئلة المتكررة</p>
+                </div>
+                <div class="option-card" data-feature="animation">
+                    <i>✨</i>
+                    <h3>حركات تفاعلية</h3>
+                    <p>إضافة حركات وتأثيرات للعناصر</p>
+                </div>
+                <div class="option-card" data-feature="newsletter">
+                    <i>📩</i>
+                    <h3>نشرة بريدية</h3>
+                    <p>نموذج للاشتراك في النشرة البريدية</p>
+                </div>
+                <div class="option-card" data-feature="search">
+                    <i>🔍</i>
+                    <h3>بحث</h3>
+                    <p>إضافة وظيفة البحث في الموقع</p>
+                </div>
+                <div class="option-card" data-feature="multilang">
+                    <i>🌐</i>
+                    <h3>متعدد اللغات</h3>
+                    <p>دعم لأكثر من لغة</p>
+                </div>
+            </div>
+            
+            <div class="feature-counter">
+                <p>تم اختيار <span id="selectedCount">0</span> من 10 مميزات</p>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="btn btn-secondary" onclick="prevStep(3)">السابق</button>
+                <button class="btn" id="nextStep3" disabled onclick="nextStep(3)">التالي (اختر 10 مميزات)</button>
+            </div>
+        </div>
+        
+        <!-- الخطوة 4: أقسام إضافية -->
+        <div class="builder-section" id="step4">
+            <h2>الخطوة 4: أقسام إضافية</h2>
+            
+            <div class="form-group">
+                <label>أضف أقساماً مخصصة لموقعك</label>
+                <div id="customSections">
+                    <!-- سيتم إضافة الأقسام هنا -->
+                </div>
+                <button class="btn" onclick="addCustomSection()">+ إضافة قسم</button>
+            </div>
+            
+            <div class="form-group">
+                <label>أضف كوداً مخصصاً (اختياري)</label>
+                <textarea class="code-editor" id="customCode" placeholder="يمكنك إضافة أي كود HTML, CSS أو JS هنا"></textarea>
+            </div>
+            
+            <div class="preview-container" id="sitePreview">
+                <div class="preview-header">
+                    <h3>معاينة الموقع</h3>
+                    <p>ستظهر معاينة لموقعك هنا</p>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="btn btn-secondary" onclick="prevStep(4)">السابق</button>
+                <button class="btn" onclick="nextStep(4)">التالي</button>
+            </div>
+        </div>
+        
+        <!-- الخطوة 5: التنزيل -->
+        <div class="builder-section" id="step5">
+            <h2>الخطوة 5: إنهاء وتنزيل الموقع</h2>
+            
+            <div class="success-message">
+                <div>🎉</div>
+                <h3>تهانينا! موقعك جاهز</h3>
+                <p>يمكنك الآن تنزيل ملفات موقعك كاملة كملف مضغوط</p>
+            </div>
+            
+            <div class="download-section">
+                <button class="btn download-btn" onclick="generateSite()">تنزيل الموقع</button>
+            </div>
+            
+            <div class="preview-container" id="finalPreview">
+                <!-- سيتم عرض معاينة الموقع النهائية هنا -->
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="btn btn-secondary" onclick="prevStep(5)">السابق</button>
+                <button class="btn btn-success" onclick="generateSite()">إنشاء الموقع</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // الكائن الرئيسي لتخزين بيانات الموقع
+        const siteData = {
+            name: '',
+            description: '',
+            category: '',
+            color: '#3498db',
+            style: 'modern',
+            features: [],
+            customSections: [],
+            customCode: ''
+        };
+
+        let currentStep = 1;
+
+        // دالة الانتقال للخطوة التالية
+        function nextStep(step) {
+            // التحقق من صحة البيانات قبل الانتقال
+            if (step === 1) {
+                const name = document.getElementById('siteName').value;
+                const description = document.getElementById('siteDescription').value;
+                const category = document.getElementById('siteCategory').value;
+                
+                if (!name || !description || !category) {
+                    alert('الرجاء ملء جميع الحقول المطلوبة');
+                    return;
+                }
+                
+                siteData.name = name;
+                siteData.description = description;
+                siteData.category = category;
+            }
+            
+            if (step === 3 && siteData.features.length < 10) {
+                alert('الرجاء اختيار 10 مميزات على الأقل');
+                return;
+            }
+            
+            // إخفاء الخطوة الحالية وإظهار التالية
+            document.getElementById(`step${step}`).classList.remove('active');
+            document.getElementById(`step${step + 1}`).classList.add('active');
+            
+            // تحديث خريطة التقدم
+            updateProgress(step + 1);
+            
+            // إذا كانت الخطوة التالية هي 4، قم بعرض المعاينة
+            if (step + 1 === 4) {
+                updatePreview();
+            }
+            
+            // إذا كانت الخطوة التالية هي 5، قم بعرض المعاينة النهائية
+            if (step + 1 === 5) {
+                generateFinalPreview();
+            }
+            
+            currentStep = step + 1;
+        }
+
+        // دالة العودة للخطوة السابقة
+        function prevStep(step) {
+            document.getElementById(`step${step}`).classList.remove('active');
+            document.getElementById(`step${step - 1}`).classList.add('active');
+            updateProgress(step - 1);
+            currentStep = step - 1;
+        }
+
+        // تحديث شريط التقدم
+        function updateProgress(step) {
+            const progressPercentage = (step / 5) * 100;
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = `${progressPercentage}%`;
+            progressBar.textContent = `${progressPercentage}% مكتمل`;
+            
+            // تحديث الخطوات النشطة
+            document.querySelectorAll('.step').forEach((el, index) => {
+                if (index + 1 <= step) {
+                    el.classList.add('active');
+                } else {
+                    el.classList.remove('active');
+                }
+            });
+        }
+
+        // إعداد اختيار الألوان
+        document.querySelectorAll('#colorOptions .option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('#colorOptions .option-card').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                siteData.color = this.getAttribute('data-color');
+            });
+        });
+
+        // إعداد اختيار أنماط التصميم
+        document.querySelectorAll('#styleOptions .option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('#styleOptions .option-card').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                siteData.style = this.getAttribute('data-style');
+            });
+        });
+
+        // إعداد اختيار المميزات
+        document.querySelectorAll('#featureOptions .option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const feature = this.getAttribute('data-feature');
+                const index = siteData.features.indexOf(feature);
+                
+                if (index === -1) {
+                    if (siteData.features.length < 10) {
+                        this.classList.add('selected');
+                        siteData.features.push(feature);
+                    }
+                } else {
+                    this.classList.remove('selected');
+                    siteData.features.splice(index, 1);
+                }
+                
+                // تحديث العداد
+                const counter = document.getElementById('selectedCount');
+                counter.textContent = siteData.features.length;
+                
+                // تفعيل/تعطيل زر التالي
+                const nextBtn = document.getElementById('nextStep3');
+                nextBtn.disabled = siteData.features.length < 10;
+                nextBtn.textContent = siteData.features.length < 10 ? 
+                    `التالي (اختر ${10 - siteData.features.length} مميزات أخرى)` : 
+                    'التالي';
+            });
+        });
+
+        // إدارة الأقسام المخصصة
+        function addCustomSection() {
+            const sectionId = `section-${Date.now()}`;
+            const sectionName = prompt('أدخل اسم القسم:');
+            if (!sectionName) return;
+            
+            const sectionContent = prompt('أدخل محتوى القسم (اختياري):') || '';
+            
+            const section = {
+                id: sectionId,
+                name: sectionName,
+                content: sectionContent
+            };
+            
+            siteData.customSections.push(section);
+            renderCustomSections();
+        }
+
+        function renderCustomSections() {
+            const container = document.getElementById('customSections');
+            container.innerHTML = '';
+            
+            siteData.customSections.forEach(section => {
+                const sectionEl = document.createElement('div');
+                sectionEl.className = 'section-item';
+                sectionEl.innerHTML = `
+                    <div>
+                        <strong>${section.name}</strong>
+                        <p>${section.content || 'لا يوجد محتوى'}</p>
+                    </div>
+                    <div>
+                        <button class="btn btn-secondary" onclick="editSection('${section.id}')">تعديل</button>
+                        <button class="btn btn-secondary" onclick="removeSection('${section.id}')">حذف</button>
+                    </div>
+                `;
+                container.appendChild(sectionEl);
+            });
+        }
+
+        function editSection(id) {
+            const section = siteData.customSections.find(s => s.id === id);
+            if (!section) return;
+            
+            const newName = prompt('تعديل اسم القسم:', section.name);
+            if (newName === null) return;
+            
+            const newContent = prompt('تعديل محتوى القسم:', section.content) || '';
+            
+            section.name = newName;
+            section.content = newContent;
+            renderCustomSections();
+        }
+
+        function removeSection(id) {
+            if (confirm('هل أنت متأكد من حذف هذا القسم؟')) {
+                siteData.customSections = siteData.customSections.filter(s => s.id !== id);
+                renderCustomSections();
+            }
+        }
+
+        // تحديث المعاينة
+        function updatePreview() {
+            const preview = document.getElementById('sitePreview');
+            preview.innerHTML = `
+                <div class="preview-header">
+                    <h3>${siteData.name}</h3>
+                    <p>${siteData.description}</p>
+                </div>
+                <div style="margin: 20px 0;">
+                    <h4>المميزات المختارة:</h4>
+                    <div>
+                        ${siteData.features.map(f => `<span class="feature-badge">${getFeatureName(f)}</span>`).join('')}
+                    </div>
+                </div>
+                <div style="margin: 20px 0;">
+                    <h4>الأقسام المخصصة:</h4>
+                    ${siteData.customSections.length > 0 ? 
+                        `<ul>${siteData.customSections.map(s => `<li><strong>${s.name}</strong>: ${s.content || 'لا يوجد محتوى'}</li>`).join('')}</ul>` : 
+                        '<p>لا توجد أقسام مخصصة</p>'}
+                </div>
+                <div style="margin: 20px 0;">
+                    <h4>تفاصيل التصميم:</h4>
+                    <p>اللون الأساسي: <span style="display: inline-block; width: 20px; height: 20px; background-color: ${siteData.color};"></span> ${siteData.color}</p>
+                    <p>نمط التصميم: ${getStyleName(siteData.style)}</p>
+                </div>
+            `;
+            
+            siteData.customCode = document.getElementById('customCode').value;
+        }
+
+        // معاينة نهائية
+        function generateFinalPreview() {
+            const preview = document.getElementById('finalPreview');
+            preview.innerHTML = generateSiteHTML();
+        }
+
+        // إنشاء الموقع
+        function generateSite() {
+            const htmlContent = generateSiteHTML();
+            const cssContent = generateSiteCSS();
+            const jsContent = generateSiteJS();
+            
+            alert('سيتم إنشاء ملف ZIP هنا في الواقع الفعلي');
+            console.log('HTML Content:\n', htmlContent);
+            console.log('CSS Content:\n', cssContent);
+            console.log('JS Content:\n', jsContent);
+            
+            const downloadSection = document.querySelector('.download-section');
+            downloadSection.innerHTML = `
+                <div class="success-message">
+                    <div>✅</div>
+                    <h3>تم إنشاء الموقع بنجاح!</h3>
+                </div>
+            `;
+        }
+
+        // دوال مساعدة
+        function getFeatureName(feature) {
+            const names = {
+                'slider': 'سلايدر صور',
+                'gallery': 'معرض صور',
+                'contact': 'نموذج تواصل',
+                'blog': 'مدونة',
+                'map': 'خريطة',
+                'social': 'روابط اجتماعية',
+                'video': 'فيديو',
+                'testimonials': 'آراء العملاء',
+                'products': 'منتجات',
+                'team': 'فريق العمل',
+                'faq': 'أسئلة شائعة',
+                'animation': 'حركات تفاعلية',
+                'newsletter': 'نشرة بريدية',
+                'search': 'بحث',
+                'multilang': 'متعدد اللغات'
+            };
+            return names[feature] || feature;
+        }
+
+        function getStyleName(style) {
+            const names = {
+                'modern': 'حديث',
+                'minimal': 'بسيط',
+                'elegant': 'أنيق',
+                'creative': 'إبداعي'
+            };
+            return names[style] || style;
+        }
+
+
+
+
+        // دالة إنشاء هيكل HTML للموقع
+        function generateSiteHTML() {
+            return `<!DOCTYPE html>
+        <html lang="ar" dir="rtl">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>${siteData.name}</title>
+            <link rel="stylesheet" href="style.css">
+        </head>
+        <body>
+            <header>
+                <h1>${siteData.name}</h1>
+                <p>${siteData.description}</p>
+            </header>
+            
+            <nav>
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    ${siteData.features.includes('blog') ? '<li><a href="#blog">المدونة</a></li>' : ''}
+                    ${siteData.features.includes('products') ? '<li><a href="#products">المنتجات</a></li>' : ''}
+                    ${siteData.features.includes('contact') ? '<li><a href="#contact">اتصل بنا</a></li>' : ''}
+                    ${siteData.customSections.map(s => `<li><a href="#${s.id}">${s.name}</a></li>`).join('')}
+                </ul>
+            </nav>
+            
+            <main>
+                ${siteData.features.includes('slider') ? `
+                <section class="slider">
+                    <h2>سلايدر الصور</h2>
+                    <div class="slides">
+                        <img src="slide1.jpg" alt="صورة 1">
+                        <img src="slide2.jpg" alt="صورة 2">
+                        <img src="slide3.jpg" alt="صورة 3">
+                    </div>
+                </section>
+                ` : ''}
+                
+                ${siteData.features.includes('products') ? `
+                <section class="products">
+                    <h2>منتجاتنا</h2>
+                    <div class="product-grid">
+                        <div class="product">
+                            <h3>منتج 1</h3>
+                            <p>وصف المنتج الأول</p>
+                        </div>
+                        <div class="product">
+                            <h3>منتج 2</h3>
+                            <p>وصف المنتج الثاني</p>
+                        </div>
+                    </div>
+                </section>
+                ` : ''}
+                
+                ${siteData.features.includes('blog') ? `
+                <section class="blog">
+                    <h2>أحدث المقالات</h2>
+                    <article>
+                        <h3>عنوان المقال الأول</h3>
+                        <p>محتوى المقال الأول...</p>
+                    </article>
+                    <article>
+                        <h3>عنوان المقال الثاني</h3>
+                        <p>محتوى المقال الثاني...</p>
+                    </article>
+                </section>
+                ` : ''}
+                
+                ${siteData.customSections.map(s => `
+                <section id="${s.id}">
+                    <h2>${s.name}</h2>
+                    <p>${s.content || 'لا يوجد محتوى'}</p>
+                </section>
+                `).join('')}
+                
+                ${siteData.features.includes('contact') ? `
+                <section class="contact">
+                    <h2>اتصل بنا</h2>
+                    <form>
+                        <input type="text" placeholder="اسمك">
+                        <input type="email" placeholder="بريدك الإلكتروني">
+                        <textarea placeholder="رسالتك"></textarea>
+                        <button type="submit">إرسال</button>
+                    </form>
+                </section>
+                ` : ''}
+            </main>
+            
+            <footer>
+                <p>جميع الحقوق محفوظة &copy; ${new Date().getFullYear()} ${siteData.name}</p>
+                ${siteData.features.includes('social') ? `
+                <div class="social-links">
+                    <a href="#">فيسبوك</a>
+                    <a href="#">تويتر</a>
+                    <a href="#">إنستجرام</a>
+                </div>
+                ` : ''}
+            </footer>
+        </body>
+        </html>`;
+        }
+
+        // دالة إنشاء ملف CSS
+        function generateSiteCSS() {
+            return `:root {
+            --primary-color: ${siteData.color};
+            --secondary-color: #${(parseInt(siteData.color.slice(1), 16) + 0x222222).toString(16)};
+        }
+
+        body {
+            font-family: ${siteData.style === 'modern' ? 'Arial, sans-serif' : 'Georgia, serif'};
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 0 0 30px 30px;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            list-style: none;
+            padding: 1rem;
+            background: rgba(255,255,255,0.9);
+        }
+
+        /* إضافة المزيد من أنماط CSS حسب المميزات المختارة */
+        ${siteData.features.includes('animation') ? `
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section {
+            animation: fadeIn 0.8s ease-out;
+        }
+        ` : ''}`;
+        }
+
+        // دالة إنشاء ملف JavaScript
+        function generateSiteJS() {
+            return `document.addEventListener('DOMContentLoaded', function() {
+            ${siteData.features.includes('slider') ? `
+            // كود السلايدر التلقائي
+            let currentSlide = 0;
+            const slides = document.querySelector('.slides');
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % 3;
+                slides.style.transform = \`translateX(-\${currentSlide * 100}%)\`;
+            }, 5000);
+            ` : ''}
+            
+            ${siteData.features.includes('contact') ? `
+            // معالجة نموذج الاتصال
+            document.querySelector('.contact form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('تم إرسال الرسالة بنجاح!');
+                e.target.reset();
+            });
+            ` : ''}
+        });`;
+        }
+    </script>
+</body>
+</html>

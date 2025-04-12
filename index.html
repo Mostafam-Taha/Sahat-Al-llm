@@ -159,23 +159,15 @@
                     </div>
                 </div>
                 <div class="get-started">
-                    <button class="cssbuttons-io-button">
+                    <button class="cssbuttons-io-button" id="startButton">
                         إبدأ الآن
-                    <div class="icon">
-                        <svg
-                        height="24"
-                        width="24"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        >
-                        <path d="M0 0h24v24H0z" fill="none"></path>
-                        <path
-                            d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
-                            fill="currentColor"
-                        ></path>
-                        </svg>
-                    </div>
-                    </button>
+                        <div class="icon">
+                            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path>
+                            </svg>
+                        </div>
+                    </button>                    
                 </div>
             </div>
         </section>
@@ -291,6 +283,12 @@
         if (!header.contains(event.target) && !menuIcon.contains(event.target)) {
             header.classList.remove('show'); // إخفاء الهيدر
         }
+    });
+
+    document.getElementById('startButton').addEventListener('click', function() {
+        window.location.href = 'Map/view-plan.html';
+        // أو يمكنك استخدام:
+        // window.open('صفحة-جديدة.html', '_blank'); // لفتح الصفحة في نافذة/تبويب جديد
     });
     </script>
 </body>
